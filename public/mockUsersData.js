@@ -15,14 +15,14 @@ const generateUser = () => ({
 const generateUsers = numberOfUsers => {
 	// Array.from({ length: numberOfUsers }, generateUser);
 	// const users = new Map();
-	const users = {};
+	const users = [];
 
 	for (let i = 0; i < numberOfUsers; i++) {
 		const generatedUser = generateUser();
-		users[generatedUser.userId] = generatedUser;
+		users.push(generatedUser);
 	}
 
 	return users;
 };
 
-fs.writeFileSync('users.json', JSON.stringify(generateUsers(10)));
+fs.writeFileSync('./public/users.json', JSON.stringify(generateUsers(10)));

@@ -26,5 +26,4 @@ function fancyLog() {
 		'background: purple; color: #FFF',
 		store.getState()
 	);
-	// console.log(store.getState());
 }
