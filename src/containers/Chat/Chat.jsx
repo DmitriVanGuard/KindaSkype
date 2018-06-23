@@ -5,6 +5,8 @@ import Messages from '../../components/Messages/Messages';
 
 import store from '../../store';
 
+import './Chat.css';
+
 const Chat = ({ chosenContactId }) => {
 	const state = store.getState();
 	const chosenContact = state.contacts.get(chosenContactId);
