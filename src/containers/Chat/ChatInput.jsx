@@ -11,8 +11,8 @@ const handleInputChange = e => {
 const handleFormSubmit = e => {
 	e.preventDefault();
 	const { typing, chosenContactId } = store.getState();
+	if (typing === '') return;
 	store.dispatch(sendMessage(typing, chosenContactId));
-	store.dispatch(setTypingValue(''));
 };
 
 const ChatInput = ({ value }) => {
