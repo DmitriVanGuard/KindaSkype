@@ -5,7 +5,9 @@ import conversations from '../../public/conversations';
 const conversationsMap = new Map(
 	Object.keys(conversations).map(conversation => [
 		parseInt(conversation, 10),
-		conversations[conversation]
+		new Map(
+			conversations[conversation].map(message => [message.number, message])
+		)
 	])
 );
 
@@ -13,12 +15,19 @@ export default (state = conversationsMap, action) => {
 	switch (action.type) {
 		case SEND_MESSAGE:
 			const { message, contactId } = action.payload;
+
 			const newState = new Map(state);
-			const messages = newState.get(contactId);
-			const updatedConversation = [
-				...messages,
-				{ number: messages.length, text: message, isClientMsg: true }
-			];
+			const conversation = newState.get(contactId);
+
+			const lastMsgNumber =
+				Array.from(conversation.values())[conversation.size - 1].number + 1;
+
+			const updatedConversation = new Map(conversation).set(lastMsgNumber, {
+				number: lastMsgNumber,
+				text: message,
+				isClientMsg: true
+			});
+
 			newState.set(contactId, updatedConversation);
 			return newState;
 
