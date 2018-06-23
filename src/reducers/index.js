@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
-import user from './user';
+import client from './client';
 import contacts from './contacts';
+import chosenContactId from './chosenContactId';
 
 export default combineReducers({
-	user,
-	contacts
+	client,
+	contacts,
+	chosenContactId
 });

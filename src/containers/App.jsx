@@ -8,11 +8,11 @@ import store from '../store';
 import './App.css';
 
 const App = () => {
-	const { contacts } = store.getState();
+	const { contacts, client, chosenContactId } = store.getState();
 	return (
 		<div className="App">
 			<Sidebar contacts={contacts} />
-			<Main />
+			<Main client={client} chosenContactId={chosenContactId} />
 		</div>
 	);
 };
