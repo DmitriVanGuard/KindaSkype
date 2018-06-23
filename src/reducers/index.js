@@ -5,11 +5,13 @@ import contacts from './contacts';
 import chosenContactId from './chosenContactId';
 import conversations from './conversations';
 import typing from './typing';
+import editedMsgNumber from './editedMsgNumber';
 
 export default combineReducers({
 	client,
 	contacts,
 	chosenContactId,
 	conversations,
-	typing
+	typing,
+	editedMsgNumber
 });

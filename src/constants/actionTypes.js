@@ -5,3 +5,7 @@ export const SET_TYPING_VALUE = 'SET_TYPING_VALUE';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 
 export const DELETE_MESSAGE = 'DELETE_MESSAGE';
+
+export const EDIT_MESSAGE = 'EDIT_MESSAGE';
+
+export const SAVE_MESSAGE = 'SAVE_MESSAGE';

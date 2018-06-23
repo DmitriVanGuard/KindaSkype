@@ -1,6 +1,6 @@
 import React from 'react';
 import store from '../../store';
-import { setTypingValue, sendMessage } from '../../actions';
+import { setTypingValue, sendMessage, saveMessage } from '../../actions';
 
 import './ChatInput.css';
 
@@ -10,12 +10,17 @@ const handleInputChange = e => {
 
 const handleFormSubmit = e => {
 	e.preventDefault();
-	const { typing, chosenContactId } = store.getState();
+	const { typing, chosenContactId, editedMsgNumber } = store.getState();
 	if (typing === '') return;
-	store.dispatch(sendMessage(typing, chosenContactId));
+
+	store.dispatch(
+		editedMsgNumber === null
+			? sendMessage(typing, chosenContactId)
+			: saveMessage(chosenContactId, editedMsgNumber, typing)
+	);
 };
 
-const ChatInput = ({ value }) => {
+const ChatInput = ({ value, editMode }) => {
 	return (
 		<form className="ChatInput" onSubmit={handleFormSubmit}>
 			<input

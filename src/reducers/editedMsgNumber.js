@@ -1,21 +1,19 @@
 import {
-	SET_TYPING_VALUE,
-	SEND_MESSAGE,
+	SET_CHOSEN_CONTACT_ID,
 	EDIT_MESSAGE,
+	DELETE_MESSAGE,
 	SAVE_MESSAGE
 } from '../constants/actionTypes';
 
 export default (state = '', action) => {
 	switch (action.type) {
-		case SET_TYPING_VALUE:
-			return action.payload;
-
-		case SEND_MESSAGE:
 		case SAVE_MESSAGE:
-			return '';
+		case DELETE_MESSAGE:
+		case SET_CHOSEN_CONTACT_ID:
+			return null;
 
 		case EDIT_MESSAGE:
-			return action.payload.message;
+			return action.payload.messageNumber;
 
 		default:
 			return state;

@@ -1,4 +1,8 @@
-import { SEND_MESSAGE, DELETE_MESSAGE } from '../constants/actionTypes';
+import {
+	SEND_MESSAGE,
+	DELETE_MESSAGE,
+	SAVE_MESSAGE
+} from '../constants/actionTypes';
 
 import conversations from '../../public/conversations';
 
@@ -38,6 +42,20 @@ export default (state = conversationsMap, action) => {
 			const conversation = state.get(contactId);
 			const updatedConversation = new Map(conversation);
 			updatedConversation.delete(messageNumber);
+
+			const newState = new Map(state).set(contactId, updatedConversation);
+			return newState;
+		}
+
+		case SAVE_MESSAGE: {
+			const { contactId, messageNumber, message } = action.payload;
+
+			const conversation = state.get(contactId);
+			const updatedConversation = new Map(conversation).set(messageNumber, {
+				number: messageNumber,
+				text: message,
+				isClientMsg: true
+			});
 
 			const newState = new Map(state).set(contactId, updatedConversation);
 			return newState;
