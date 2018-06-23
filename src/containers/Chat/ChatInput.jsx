@@ -2,7 +2,7 @@ import React from 'react';
 import store from '../../store';
 import { setTypingValue } from '../../actions';
 
-import './ChatInput';
+import './ChatInput.css';
 
 const handleInputChange = e => {
 	e.preventDefault();
