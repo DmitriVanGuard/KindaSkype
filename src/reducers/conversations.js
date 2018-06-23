@@ -1,5 +1,12 @@
 import conversations from '../../public/conversations';
 
-export default (state = conversations, action) => {
+const conversationsMap = new Map(
+	Object.keys(conversations).map(conversation => [
+		conversation,
+		conversations[conversation]
+	])
+);
+
+export default (state = conversationsMap, action) => {
 	return state;
 };

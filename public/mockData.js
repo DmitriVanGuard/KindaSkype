@@ -30,8 +30,6 @@ const generateMsg = number => ({
 });
 
 const generateMsgs = numberOfMsgs => {
-	// Array.from({ length: numberOfMsgs }, generateUser);
-	// const users = new Map();
 	const msg = [];
 
 	for (let i = 0; i < numberOfMsgs; i++) {
@@ -42,10 +40,15 @@ const generateMsgs = numberOfMsgs => {
 	return msg;
 };
 
-const generateConversations = contacts =>
-	contacts.map(contact => ({
-		[contact.userId]: generateMsgs(10)
-	}));
+const generateConversations = contacts => {
+	const conversations = {};
+
+	contacts.forEach(
+		contact => (conversations[contact.userId] = generateMsgs(10))
+	);
+
+	return conversations;
+};
 
 const client = generateUser();
 const contacts = generateUsers(10);
