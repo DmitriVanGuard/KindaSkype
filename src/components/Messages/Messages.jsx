@@ -15,7 +15,7 @@ class Messages extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		if (this.props.messages.size !== prevProps.messages.size) {
+		if (this.props.messages.size > prevProps.messages.size) {
 			this.scrollToBottom();
 		}
 	}

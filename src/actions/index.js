@@ -1,7 +1,8 @@
 import {
 	SET_CHOSEN_CONTACT_ID,
 	SET_TYPING_VALUE,
-	SEND_MESSAGE
+	SEND_MESSAGE,
+	DELETE_MESSAGE
 } from '../constants/actionTypes';
 
 export const setChosenContactId = id => ({
@@ -20,4 +21,9 @@ export const sendMessage = (message, contactId) => ({
 		message,
 		contactId
 	}
+});
+
+export const deleteMessage = (contactId, messageNumber) => ({
+	type: DELETE_MESSAGE,
+	payload: { contactId, messageNumber }
 });
