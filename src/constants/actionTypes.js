@@ -1,3 +1,5 @@
 export const SET_CHOSEN_CONTACT_ID = 'SET_CHOSEN_CONTACT_ID';
 
 export const SET_TYPING_VALUE = 'SET_TYPING_VALUE';
+
+export const SEND_MESSAGE = 'SEND_MESSAGE';
