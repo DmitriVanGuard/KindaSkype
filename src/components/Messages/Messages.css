@@ -16,7 +16,10 @@
 	max-width: 90%;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
+	cursor: pointer;
+	position: relative;
 }
+
 .Messages__item_client {
 	margin-left: auto;
 	background: #2b2c33;
@@ -30,4 +33,25 @@
 	.Messages__item {
 		max-width: 60%;
 	}
+}
+
+.Messages__item-delete {
+	display: none;
+	position: absolute;
+	font-size: 13px;
+	border: 1px solid #eee;
+	color: #eee;
+	border-radius: 50%;
+	background-color: #333;
+	padding: 1px 5px 2px;
+	top: -5px;
+	left: calc(100% - 13px);
+}
+
+.Messages__item:hover .Messages__item-delete {
+	display: inline-block;
+}
+
+.Messages__item_client .Messages__item-delete {
+	left: -5px;
 }

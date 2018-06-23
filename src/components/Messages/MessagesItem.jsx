@@ -6,6 +6,7 @@ const MessagesItem = ({ message }) => {
 		<span
 			className={`Messages__item ${isClientMsg ? 'Messages__item_client' : ''}`}
 		>
+			<span className="Messages__item-delete">x</span>
 			{text}
 		</span>
 	);
