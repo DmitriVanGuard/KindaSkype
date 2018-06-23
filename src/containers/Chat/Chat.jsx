@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from '../../components/Header/Header';
 import Messages from '../../components/Messages/Messages';
+import ChatInput from './ChatInput';
 
 import store from '../../store';
 
@@ -16,6 +17,7 @@ const Chat = ({ chosenContactId }) => {
 		<div className="Chat">
 			<Header contact={chosenContact} />
 			<Messages messages={messages} />
+			<ChatInput value={state.typing} />
 		</div>
 	);
 };
