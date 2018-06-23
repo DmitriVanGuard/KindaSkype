@@ -1,6 +1,6 @@
 import React from 'react';
 
-import User from '../User/User';
+import Contact from '../Contact/Contact';
 
 import './Sidebar.css';
 
@@ -8,7 +8,7 @@ const Sidebar = ({ contacts }) => {
 	return (
 		<aside className="Sidebar">
 			{Array.from(contacts.values()).map(contact => (
-				<User user={contact} key={contact.userId} />
+				<Contact contact={contact} key={contact.userId} />
 			))}
 		</aside>
 	);

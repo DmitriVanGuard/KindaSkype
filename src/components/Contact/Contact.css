@@ -1,30 +1,30 @@
-.User {
+.Contact {
 	display: flex;
 	align-items: flex-start;
 	padding: 1rem;
 }
 
-.User:hover {
+.Contact:hover {
 	background-color: rgba(0, 0, 0, 0.2);
 	cursor: pointer;
 }
 
-.User__pic {
+.Contact__pic {
 	width: 50px;
 	border-radius: 50%;
 }
 
-.User__details {
+.Contact__details {
 	display: none;
 }
 
 @media (min-width: 576px) {
-	.User__details {
+	.Contact__details {
 		display: block;
 		padding: 0 0 0 1rem;
 	}
 
-	.User__details-name {
+	.Contact__details-name {
 		margin: 0;
 		color: rgba(255, 255, 255, 0.8);
 		font-size: 1rem;
