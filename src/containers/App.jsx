@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Sidebar from './components/Sidebar/Sidebar';
-import Main from './Main';
+import Sidebar from '../components/Sidebar/Sidebar';
+import Main from '../components/Main';
 
-import store from './store';
+import store from '../store';
 
 import './App.css';
 
