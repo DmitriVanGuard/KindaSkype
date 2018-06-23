@@ -8,8 +8,8 @@ import './Main.css';
 const Main = ({ client, chosenContactId }) => {
 	return (
 		<main className="Main">
-			{chosenContactId ? (
-				<Chat chosenContact={chosenContactId} />
+			{chosenContactId !== null ? (
+				<Chat chosenContactId={chosenContactId} />
 			) : (
 				<Welcome client={client} />
 			)}
