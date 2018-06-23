@@ -1,6 +1,6 @@
-import users from '../../public/users';
+import contactsData from '../../public/contacts';
 
-const contacts = new Map(users.map(user => [user.userId, user]));
+const contacts = new Map(contactsData.map(user => [user.userId, user]));
 
 export default (state = contacts, action) => {
 	return state;
