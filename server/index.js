@@ -23,13 +23,22 @@ io.on('connection', socket => {
 
 	socket.on('login', username => {
 		console.log(username);
-		socket.emit('login', {
-			status: 'OK',
-			data: `everything ok, your username ${username}`
-		});
+		// setTimeout(() => {
+		socket.emit(
+			'login',
+			createAnswer('OK', `everything ok, your username ${username}`)
+		);
+		// }, 500);
 	});
 });
 
 http.listen(config.PORT, config.HOST, () =>
 	console.log(`Listening on port ${config.PORT}...`)
 );
+
+function createAnswer(status, data) {
+	return {
+		status,
+		data
+	};
+}

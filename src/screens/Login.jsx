@@ -14,10 +14,11 @@ const handleFormSubmit = evt => {
 	}
 
 	Client.emit('login', username)
-		.then(answer => console.log(answer))
+		.then(response => {
+			console.log(response);
+			store.dispatch(loginUser(username));
+		})
 		.catch(err => console.log(err));
-
-	store.dispatch(loginUser(username));
 };
 
 const ScreensLogin = () => (
