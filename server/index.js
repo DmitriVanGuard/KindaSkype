@@ -7,8 +7,6 @@ const io = require('socket.io')(http);
 
 const config = require('./config');
 
-io.on('connection', socket => console.log('a user connected'));
-
 app.use('*', (req, res, next) => {
 	if (req.originalUrl.indexOf('socket.io/') === -1) {
 		proxy(`${config.HOST}:${config.PROXY_PORT}`, {
@@ -17,9 +15,14 @@ app.use('*', (req, res, next) => {
 	}
 });
 
-// app.get('*', req => {
-// console.log(`client-ip: ${req.ip}, request-url: ${req.url}`);
-// });
+io.on('connection', socket => {
+	console.log('a user connected');
+	socket.on('disconnect', () => {
+		console.log('user has disconnected');
+	});
+
+	socket.on('login', username => console.log(username));
+});
 
 http.listen(config.PORT, config.HOST, () =>
 	console.log(`Listening on port ${config.PORT}...`)

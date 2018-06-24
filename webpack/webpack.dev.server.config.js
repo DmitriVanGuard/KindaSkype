@@ -3,10 +3,14 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const backendConfig = require('../server/config');
+
 const DEV_SERVER_CONFIG = {
 	// entry: './src/index.jsx',
 	entry: [
-		'webpack-dev-server/client?http://192.168.80.5:8080',
+		`webpack-dev-server/client?http://${backendConfig.HOST}:${
+			backendConfig.PROXY_PORT
+		}`,
 		'webpack/hot/only-dev-server',
 		'./src/index.jsx'
 	],
@@ -16,7 +20,8 @@ const DEV_SERVER_CONFIG = {
 	devServer: {
 		hot: true,
 		historyApiFallback: true,
-		host: '192.168.80.5'
+		host: backendConfig.HOST,
+		port: backendConfig.PROXY_PORT
 		// proxy: {
 		// 	'/': {
 		// 		target: 'http://localhost:3000'

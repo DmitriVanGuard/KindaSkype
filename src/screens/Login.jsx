@@ -3,6 +3,8 @@ import React from 'react';
 import store from '../store';
 import { loginUser } from '../actions/rootActions';
 
+import socket from '../utils/socket';
+
 const handleFormSubmit = evt => {
 	evt.preventDefault();
 	const username = evt.currentTarget.username.value;
@@ -10,7 +12,7 @@ const handleFormSubmit = evt => {
 		alert('Please, enter a correct username');
 		return;
 	}
-
+	socket.emit('login', username);
 	store.dispatch(loginUser(username));
 };
 
