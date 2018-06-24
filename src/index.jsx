@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './containers/App';
+import App from './components/App';
 
 import store from './store';
 // import registerServiceWorker from './registerServiceWorker';
-
 import './index.css';
+import fancyLog from './utils/log';
 
 const render = () => {
 	fancyLog();
@@ -16,14 +16,3 @@ const render = () => {
 render();
 store.subscribe(render);
 // registerServiceWorker();
-
-/* **** */
-/* HELPER FUNCTIONS */
-/* **** */
-function fancyLog() {
-	console.log(
-		`%c Rendered with -> `,
-		'background: purple; color: #FFF',
-		store.getState()
-	);
-}

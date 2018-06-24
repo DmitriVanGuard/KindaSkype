@@ -12,9 +12,9 @@ function handleUserClick({ userId }) {
 
 const Contact = ({ contact }) => {
 	const { name, profilePic, status } = contact;
-	handleUserClick.bind(null, contact);
+	// const newHandleUserClick = handleUserClick.bind(null, contact);
 	return (
-		<div className="Contact" onClick={handleUserClick}>
+		<div className="Contact" onClick={() => handleUserClick(contact)}>
 			<img src={profilePic} alt={`${name} pic`} className="Contact__pic" />
 			<div className="Contact__details">
 				<p className="Contact__details-name">{name}</p>

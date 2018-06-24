@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Welcome from './Welcome/Welcome';
-import Chat from '../containers/Chat/Chat';
+import Chat from './Chat/Chat';
 
 import './Main.css';
 

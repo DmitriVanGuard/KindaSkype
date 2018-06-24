@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Header from '../../components/Header/Header';
-import Messages from '../../components/Messages/Messages';
+import Header from '../Header/Header';
+import Messages from '../Messages/Messages';
 import ChatInput from './ChatInput';
 
 import store from '../../store';

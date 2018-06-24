@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Sidebar from '../components/Sidebar/Sidebar';
-import Main from '../components/Main';
+import Sidebar from './Sidebar/Sidebar';
+import Main from './Main';
 
 import store from '../store';
 
