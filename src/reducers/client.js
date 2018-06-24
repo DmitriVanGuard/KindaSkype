@@ -1,3 +1,12 @@
 // import client from '../../public/client';
+import { USER_LOGIN } from '../actions/types';
 
-export default (state = { username: '', userId: 0 }) => state;
+export default (state = { username: '', userId: 0 }, action) => {
+	switch (action.type) {
+		case USER_LOGIN:
+			return Object.assign({}, state, { username: action.payload });
+
+		default:
+			return state;
+	}
+};

@@ -1,3 +1,7 @@
+export const USER_LOGIN = 'USER_LOGIN';
+
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+
 export const SET_CHOSEN_CONTACT_ID = 'SET_CHOSEN_CONTACT_ID';
 
 export const SET_TYPING_VALUE = 'SET_TYPING_VALUE';

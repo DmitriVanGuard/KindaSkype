@@ -4,7 +4,8 @@ import {
 	SEND_MESSAGE,
 	DELETE_MESSAGE,
 	EDIT_MESSAGE,
-	SAVE_MESSAGE
+	SAVE_MESSAGE,
+	USER_LOGIN
 } from './types';
 
 export const setChosenContactId = id => ({
@@ -38,4 +39,9 @@ export const editMessage = (messageNumber, message) => ({
 export const saveMessage = (contactId, messageNumber, message) => ({
 	type: SAVE_MESSAGE,
 	payload: { contactId, messageNumber, message }
+});
+
+export const loginUser = username => ({
+	type: USER_LOGIN,
+	payload: username
 });
