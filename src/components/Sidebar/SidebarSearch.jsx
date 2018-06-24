@@ -1,18 +1,21 @@
 import React from 'react';
 
-import SidebarSearchResults from './SidebarSearchResults';
-import store from '../../store';
+// import SidebarSearchResults from './SidebarSearchResults';
+// import store from '../../store';
 
-const SidebarSearch = () => {
-	const { matchedContacts } = store.getState();
-	return (
-		<div className="Search">
-			<input type="text" placeholder="Search for a contact..." />
-			{matchedContacts && (
+const SidebarSearch = ({ value, handleInputChange }) => (
+	// const { matchedContacts } = store.getState();
+	<div className="Search">
+		<input
+			type="text"
+			placeholder="Search for a contact..."
+			value={value}
+			onChange={handleInputChange}
+		/>
+		{/* {matchedContacts && (
 				<SidebarSearchResults matchedContacts={matchedContacts} />
-			)}
-		</div>
-	);
-};
+			)} */}
+	</div>
+);
 
 export default SidebarSearch;
