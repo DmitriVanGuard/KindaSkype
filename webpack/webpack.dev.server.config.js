@@ -16,12 +16,12 @@ const DEV_SERVER_CONFIG = {
 	devServer: {
 		hot: true,
 		historyApiFallback: true,
-		host: '192.168.80.5',
-		proxy: {
-			'/': {
-				target: 'http://localhost:8989'
-			}
-		}
+		host: '192.168.80.5'
+		// proxy: {
+		// 	'/': {
+		// 		target: 'http://localhost:3000'
+		// 	}
+		// }
 	},
 
 	plugins: [

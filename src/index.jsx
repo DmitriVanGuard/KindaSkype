@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import io from 'socket.io-client';
 
 import App from './App';
 
@@ -16,3 +17,6 @@ const render = () => {
 render();
 store.subscribe(render);
 // registerServiceWorker();
+
+// eslint-disable-next-line
+const socket = io();

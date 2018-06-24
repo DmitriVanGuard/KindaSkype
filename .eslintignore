@@ -1,5 +1,6 @@
 node_modules/
 webpack/
+server/
 public/
 build/
 webpack.config.js/
