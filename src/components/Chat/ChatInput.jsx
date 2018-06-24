@@ -1,6 +1,6 @@
 import React from 'react';
 import store from '../../store';
-import { setTypingValue, sendMessage, saveMessage } from '../../actions';
+import { setTypingValue, sendMessage, saveMessage } from '../../actions/rootActions';
 
 import './ChatInput.css';
 

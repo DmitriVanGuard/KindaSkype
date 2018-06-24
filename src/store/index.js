@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 
-import reducer from '../reducers';
+import reducer from '../reducers/rootReducers';
 // import users from '../../public/users';
 
 // const contacts = new Map(users.map(user => [user.userId, user]));

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import store from '../../store';
-import { deleteMessage, editMessage } from '../../actions';
+import { deleteMessage, editMessage } from '../../actions/rootActions';
 
 const handleDeleteClick = evt =>
 	store.dispatch(

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import store from '../../store';
-import { setChosenContactId } from '../../actions';
+import { setChosenContactId } from '../../actions/rootActions';
 
 import './Contact.css';
 
@@ -12,7 +12,6 @@ function handleUserClick({ userId }) {
 
 const Contact = ({ contact }) => {
 	const { name, profilePic, status } = contact;
-	// const newHandleUserClick = handleUserClick.bind(null, contact);
 	return (
 		<div className="Contact" onClick={() => handleUserClick(contact)}>
 			<img src={profilePic} alt={`${name} pic`} className="Contact__pic" />

@@ -1,4 +1,4 @@
-import { SET_CHOSEN_CONTACT_ID } from '../constants/actionTypes';
+import { SET_CHOSEN_CONTACT_ID } from '../actions/types';
 
 export default (state = null, action) => {
 	switch (action.type) {

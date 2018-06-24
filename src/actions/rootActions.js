@@ -5,7 +5,7 @@ import {
 	DELETE_MESSAGE,
 	EDIT_MESSAGE,
 	SAVE_MESSAGE
-} from '../constants/actionTypes';
+} from './types';
 
 export const setChosenContactId = id => ({
 	type: SET_CHOSEN_CONTACT_ID,

@@ -1,8 +1,4 @@
-import {
-	SEND_MESSAGE,
-	DELETE_MESSAGE,
-	SAVE_MESSAGE
-} from '../constants/actionTypes';
+import { SEND_MESSAGE, DELETE_MESSAGE, SAVE_MESSAGE } from '../actions/types';
 
 import conversations from '../../public/conversations';
 

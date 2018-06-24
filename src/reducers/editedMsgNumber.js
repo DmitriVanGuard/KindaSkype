@@ -3,7 +3,7 @@ import {
 	EDIT_MESSAGE,
 	DELETE_MESSAGE,
 	SAVE_MESSAGE
-} from '../constants/actionTypes';
+} from '../actions/types';
 
 export default (state = '', action) => {
 	switch (action.type) {
