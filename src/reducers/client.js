@@ -1,3 +1,3 @@
-import client from '../../public/client';
+// import client from '../../public/client';
 
-export default (state = client) => state;
+export default (state = { username: '', userId: 0 }) => state;
