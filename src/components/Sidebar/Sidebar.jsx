@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Contact from '../Contact/Contact';
 
@@ -12,4 +13,6 @@ const Sidebar = ({ contacts }) => (
 	</aside>
 );
 
-export default Sidebar;
+const mapStateToProps = state => ({ contacts: state.contacts });
+
+export default connect(mapStateToProps)(Sidebar);
