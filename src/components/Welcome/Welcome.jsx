@@ -8,11 +8,13 @@ const Welcome = ({ client }) => {
 	return (
 		<div className="Welcome">
 			<h1 className="Welcome__name">Welcome, {firstName}</h1>
-			<img src={profilePic} alt={`${name} photo`} className="Welcome__pic" />
+			<img src={profilePic} alt={`${name}`} className="Welcome__pic" />
 			<p className="Welcome__status">
 				<b>Status:</b> {status}
 			</p>
-			<button className="Welcome__btn">Start a conversation</button>
+			<button type="button" className="Welcome__btn">
+				Start a conversation
+			</button>
 			<p className="Welcome__info">
 				Search for someone to start chatting with or go to Contacts to see who
 				is available

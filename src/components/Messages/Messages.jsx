@@ -15,6 +15,7 @@ class Messages extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
+		// eslint-disable-next-line
 		if (this.props.messages.size > prevProps.messages.size) {
 			this.scrollToBottom();
 		}

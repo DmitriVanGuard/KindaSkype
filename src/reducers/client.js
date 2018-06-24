@@ -1,5 +1,3 @@
 import client from '../../public/client';
 
-export default (state = client, action) => {
-	return state;
-};
+export default (state = client) => state;

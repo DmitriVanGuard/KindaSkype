@@ -5,16 +5,14 @@ import Chat from '../containers/Chat/Chat';
 
 import './Main.css';
 
-const Main = ({ client, chosenContactId }) => {
-	return (
-		<main className="Main">
-			{chosenContactId !== null ? (
-				<Chat chosenContactId={chosenContactId} />
-			) : (
-				<Welcome client={client} />
-			)}
-		</main>
-	);
-};
+const Main = ({ client, chosenContactId }) => (
+	<main className="Main">
+		{chosenContactId !== null ? (
+			<Chat chosenContactId={chosenContactId} />
+		) : (
+			<Welcome client={client} />
+		)}
+	</main>
+);
 
 export default Main;

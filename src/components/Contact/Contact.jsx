@@ -1,7 +1,7 @@
 import React from 'react';
 
 import store from '../../store';
-import { setChosenContactId } from '../../actions/';
+import { setChosenContactId } from '../../actions';
 
 import './Contact.css';
 
@@ -12,8 +12,9 @@ function handleUserClick({ userId }) {
 
 const Contact = ({ contact }) => {
 	const { name, profilePic, status } = contact;
+	handleUserClick.bind(null, contact);
 	return (
-		<div className="Contact" onClick={handleUserClick.bind(null, contact)}>
+		<div className="Contact" onClick={handleUserClick}>
 			<img src={profilePic} alt={`${name} pic`} className="Contact__pic" />
 			<div className="Contact__details">
 				<p className="Contact__details-name">{name}</p>

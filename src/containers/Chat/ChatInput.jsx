@@ -20,18 +20,16 @@ const handleFormSubmit = e => {
 	);
 };
 
-const ChatInput = ({ value, editMode }) => {
-	return (
-		<form className="ChatInput" onSubmit={handleFormSubmit}>
-			<input
-				type="text"
-				placeholder="Write a message..."
-				className="ChatInput__input"
-				value={value}
-				onChange={handleInputChange}
-			/>
-		</form>
-	);
-};
+const ChatInput = ({ value }) => (
+	<form className="ChatInput" onSubmit={handleFormSubmit}>
+		<input
+			type="text"
+			placeholder="Write a message..."
+			className="ChatInput__input"
+			value={value}
+			onChange={handleInputChange}
+		/>
+	</form>
+);
 
 export default ChatInput;
