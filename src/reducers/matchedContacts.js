@@ -10,7 +10,7 @@ export default (state = null, action) => {
 			return null;
 
 		case CONTACT_SEARCH_SUCCESS:
-			return objectsToMapByKey(action.payload, 'userId');
+			return action.payload && objectsToMapByKey(action.payload, 'userId');
 
 		default:
 			return state;

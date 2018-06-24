@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Subject } from 'rxjs';
 
-import Contact from '../Contact/Contact';
+import Contacts from '../Contact/Contacts';
 import SidebarSearch from './SidebarSearch';
 
 import store from '../../store';
@@ -50,11 +50,7 @@ class Sidebar extends Component {
 					value={match}
 					handleInputChange={this.handleInputChange}
 				/>
-				{Array.from(
-					matchedContacts === null
-						? contacts.values()
-						: matchedContacts.values()
-				).map(contact => <Contact contact={contact} key={contact.userId} />)}
+				<Contacts contacts={contacts} matchedContacts={matchedContacts} />
 			</aside>
 		);
 	}

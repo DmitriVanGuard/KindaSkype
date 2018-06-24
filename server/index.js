@@ -53,15 +53,19 @@ io.on('connection', socket => {
 	socket.on('CONTACT_SEARCH', contactUsername => {
 		if (contactUsername && socket.username !== contactUsername) {
 			// console.log();
+			const contact = clients.get(contactUsername);
 			socket.emit(
 				'CONTACT_SEARCH',
-				createAnswer('OK', [
-					{
-						userId: clients.get(contactUsername).id,
-						name: contactUsername,
-						status: 'Online'
-					}
-				])
+				createAnswer(
+					'OK',
+					contact !== undefined && [
+						{
+							userId: clients.get(contactUsername).id,
+							name: contactUsername,
+							status: 'Online'
+						}
+					]
+				)
 			);
 		}
 	});
