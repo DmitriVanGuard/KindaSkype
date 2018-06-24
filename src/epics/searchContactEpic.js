@@ -15,13 +15,11 @@ import {
 
 export const resetContactSearch = () => ({ type: CONTACT_SEARCH_RESET });
 
-export const searchContact = contact => {
-	console.log(contact, ' to search');
-	return {
-		type: CONTACT_SEARCH,
-		payload: contact
-	};
-};
+export const searchContact = contact => ({
+	type: CONTACT_SEARCH,
+	payload: contact
+});
+
 const searchContactFulfilled = payload => ({
 	type: CONTACT_SEARCH_SUCCESS,
 	payload

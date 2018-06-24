@@ -51,10 +51,17 @@ io.on('connection', socket => {
 	});
 
 	socket.on('CONTACT_SEARCH', contactUsername => {
-		if (contactUsername) {
+		if (contactUsername && socket.username !== contactUsername) {
+			// console.log();
 			socket.emit(
 				'CONTACT_SEARCH',
-				createAnswer('OK', [{ userId: 555, name: contactUsername }])
+				createAnswer('OK', [
+					{
+						userId: clients.get(contactUsername).id,
+						name: contactUsername,
+						status: 'Online'
+					}
+				])
 			);
 		}
 	});
