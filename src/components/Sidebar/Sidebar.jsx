@@ -5,20 +5,28 @@ import { Subject } from 'rxjs';
 import Contact from '../Contact/Contact';
 import SidebarSearch from './SidebarSearch';
 
+import store from '../../store';
+import {
+	searchContact,
+	resetContactSearch
+} from '../../epics/searchContactEpic';
+
 import './Sidebar.css';
 
 class Sidebar extends Component {
 	state = {
-		match: '',
-		toMatch: ''
+		match: ''
 	};
 
 	componentDidMount() {
 		this.subscription = this.onContactSearch$
-			.debounceTime(500)
-			.subscribe(toMatch =>
-				this.setState(prevState => Object.assign({}, prevState, { toMatch }))
-			);
+			.debounceTime(700)
+			.subscribe(username => {
+				console.log(username);
+				store.dispatch(
+					username !== '' ? searchContact(username) : resetContactSearch()
+				);
+			});
 	}
 
 	componentWillUnmount() {
@@ -35,17 +43,18 @@ class Sidebar extends Component {
 
 	render() {
 		const { contacts, matchedContacts } = this.props;
-		const { match, toMatch } = this.state;
+		const { match } = this.state;
 		return (
 			<aside className="Sidebar">
-				{toMatch}
 				<SidebarSearch
 					value={match}
 					handleInputChange={this.handleInputChange}
 				/>
-				{Array.from(matchedContacts || contacts.values()).map(contact => (
-					<Contact contact={contact} key={contact.userId} />
-				))}
+				{Array.from(
+					matchedContacts === null
+						? contacts.values()
+						: matchedContacts.values()
+				).map(contact => <Contact contact={contact} key={contact.userId} />)}
 			</aside>
 		);
 	}

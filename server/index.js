@@ -49,6 +49,15 @@ io.on('connection', socket => {
 		// }, 500);
 		// console.log(io.sockets);
 	});
+
+	socket.on('CONTACT_SEARCH', contactUsername => {
+		if (contactUsername) {
+			socket.emit(
+				'CONTACT_SEARCH',
+				createAnswer('OK', [{ userId: 555, name: contactUsername }])
+			);
+		}
+	});
 });
 
 http.listen(config.PORT, config.HOST, () =>

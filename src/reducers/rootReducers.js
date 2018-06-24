@@ -6,6 +6,7 @@ import chosenContactId from './chosenContactId';
 import conversations from './conversations';
 import typing from './typing';
 import editedMsgNumber from './editedMsgNumber';
+import matchedContacts from './matchedContacts';
 
 export default combineReducers({
 	client,
@@ -13,5 +14,6 @@ export default combineReducers({
 	chosenContactId,
 	conversations,
 	typing,
-	editedMsgNumber
+	editedMsgNumber,
+	matchedContacts
 });

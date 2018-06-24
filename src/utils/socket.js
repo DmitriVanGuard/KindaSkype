@@ -5,7 +5,8 @@ class Client {
 		this.socket = io();
 	}
 
-	emit(type, payload, timeout = 5000) {
+	// emit(type, payload, timeout = 5000) {
+	emit(type, payload) {
 		return new Promise((resolve, reject) => {
 			this.socket.emit(type, payload);
 
@@ -15,9 +16,9 @@ class Client {
 					answer.status === 'OK' ? resolve(answer.data) : reject(answer)
 			);
 
-			setTimeout(() => {
-				reject({ status: 'TIMEOUT', data: 'Time has run out' });
-			}, timeout);
+			// setTimeout(() => {
+			// 	reject({ status: 'TIMEOUT', data: 'Time has run out' });
+			// }, timeout);
 		});
 	}
 }
