@@ -1,4 +1,9 @@
-import { SEND_MESSAGE, DELETE_MESSAGE, SAVE_MESSAGE } from '../actions/types';
+import {
+	SEND_MESSAGE,
+	DELETE_MESSAGE,
+	SAVE_MESSAGE,
+	START_NEW_CONVERSATION
+} from '../actions/types';
 
 import conversations from '../../public/conversations';
 
@@ -12,14 +17,16 @@ const conversationsMap = new Map(
 );
 
 export default (state = conversationsMap, action) => {
+	console.log(action.type);
 	switch (action.type) {
 		case SEND_MESSAGE: {
 			const { message, contactId } = action.payload;
 
 			const conversation = state.get(contactId);
 
-			const lastMsgNumber =
-				Array.from(conversation.values())[conversation.size - 1].number + 1;
+			const lastMsgNumber = conversation.size
+				? Array.from(conversation.values())[conversation.size - 1].number + 1
+				: 0;
 
 			const updatedConversation = new Map(conversation).set(lastMsgNumber, {
 				number: lastMsgNumber,
@@ -56,6 +63,9 @@ export default (state = conversationsMap, action) => {
 			const newState = new Map(state).set(contactId, updatedConversation);
 			return newState;
 		}
+
+		case START_NEW_CONVERSATION:
+			return new Map(state).set(action.payload.userId, new Map());
 
 		default:
 			return state;

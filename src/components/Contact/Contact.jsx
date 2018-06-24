@@ -1,13 +1,22 @@
 import React from 'react';
 
 import store from '../../store';
-import { setChosenContactId } from '../../actions/rootActions';
+import {
+	setChosenContactId,
+	startNewConversation
+} from '../../actions/rootActions';
 
 import './Contact.css';
 
 function handleUserClick({ userId }) {
 	console.log(userId);
-	store.dispatch(setChosenContactId(userId));
+	const { matchedContacts } = store.getState();
+
+	store.dispatch(
+		matchedContacts
+			? startNewConversation(matchedContacts.get(userId))
+			: setChosenContactId(userId)
+	);
 }
 
 const Contact = ({ contact }) => {

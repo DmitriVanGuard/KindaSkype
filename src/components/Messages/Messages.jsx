@@ -35,9 +35,11 @@ class Messages extends Component {
 		const { messages } = this.props;
 		return (
 			<div className="Messages" ref={this.msgsRef}>
-				{Array.from(messages.values()).map(message => (
-					<MessagesItem message={message} key={message.number} />
-				))}
+				{messages
+					? Array.from(messages.values()).map(message => (
+							<MessagesItem message={message} key={message.number} />
+					  ))
+					: 'It is a fresh new conversation :)'}
 			</div>
 		);
 	}

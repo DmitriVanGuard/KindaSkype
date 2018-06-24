@@ -5,7 +5,7 @@ import {
 	SAVE_MESSAGE
 } from '../actions/types';
 
-export default (state = '', action) => {
+export default (state = null, action) => {
 	switch (action.type) {
 		case SAVE_MESSAGE:
 		case DELETE_MESSAGE:

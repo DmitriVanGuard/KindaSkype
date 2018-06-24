@@ -5,12 +5,18 @@ import {
 	DELETE_MESSAGE,
 	EDIT_MESSAGE,
 	SAVE_MESSAGE,
-	USER_LOGIN
+	USER_LOGIN,
+	START_NEW_CONVERSATION
 } from './types';
 
 export const setChosenContactId = id => ({
 	type: SET_CHOSEN_CONTACT_ID,
 	payload: id
+});
+
+export const startNewConversation = contact => ({
+	type: START_NEW_CONVERSATION,
+	payload: contact
 });
 
 export const setTypingValue = value => ({
