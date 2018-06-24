@@ -50,7 +50,9 @@ class Sidebar extends Component {
 					value={match}
 					handleInputChange={this.handleInputChange}
 				/>
-				<Contacts contacts={contacts} matchedContacts={matchedContacts} />
+				<Contacts
+					contacts={matchedContacts === false ? contacts : matchedContacts}
+				/>
 			</aside>
 		);
 	}

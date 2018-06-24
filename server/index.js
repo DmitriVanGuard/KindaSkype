@@ -58,13 +58,15 @@ io.on('connection', socket => {
 				'CONTACT_SEARCH',
 				createAnswer(
 					'OK',
-					contact !== undefined && [
-						{
-							userId: clients.get(contactUsername).id,
-							name: contactUsername,
-							status: 'Online'
-						}
-					]
+					contact === undefined
+						? null
+						: [
+								{
+									userId: clients.get(contactUsername).id,
+									name: contactUsername,
+									status: 'Online'
+								}
+						  ]
 				)
 			);
 		}
