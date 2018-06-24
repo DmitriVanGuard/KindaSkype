@@ -4,6 +4,8 @@ const DEV_CONFIG = require('./webpack/webpack.dev.config');
 const DEV_SERVER_CONFIG = require('./webpack/webpack.dev.server.config');
 
 const WEBPACK_CONFIG = {
+	context: __dirname,
+
 	resolve: {
 		extensions: ['.js', '.jsx', '.json']
 	},

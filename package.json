@@ -4,12 +4,15 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "NODE_ENV=development webpack-dev-server --mode development --watch"
+		"dev": "NODE_ENV=development webpack-dev-server --mode development --watch",
+		"server:client": "NODE_ENV=dev_server webpack-dev-server --mode development --watch",
+		"server": "nodemon server/index.js"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"express": "^4.16.3",
 		"react": "^16.4.1",
 		"react-dom": "^16.4.1",
 		"react-redux": "^5.0.7",
