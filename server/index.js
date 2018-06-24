@@ -21,6 +21,7 @@ io.on('connection', socket => {
 	console.log('New user has connected to the server...');
 
 	socket.on('disconnect', () => {
+		if (!socket.hasOwnProperty('username')) return;
 		console.log(
 			`${socket.username} has disconnected and his socket was deleted...`
 		);

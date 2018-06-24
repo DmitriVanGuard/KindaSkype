@@ -18,7 +18,7 @@ const handleFormSubmit = evt => {
 			console.log(response);
 			store.dispatch(loginUser(username));
 		})
-		.catch(err => console.log(err));
+		.catch(err => alert(err.data));
 };
 
 const ScreensLogin = () => (
