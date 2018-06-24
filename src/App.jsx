@@ -9,11 +9,9 @@ import store from './store';
 
 import './App.css';
 
-const { client } = store.getState();
-
 const App = () => (
 	<Provider store={store}>
-		{client.username !== '' ? (
+		{store.getState().client.username !== '' ? (
 			<div className="App">
 				<Sidebar />
 				<Main />

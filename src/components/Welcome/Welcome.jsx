@@ -3,11 +3,11 @@ import React from 'react';
 import './Welcome.css';
 
 const Welcome = ({ client }) => {
-	const { name, profilePic, status } = client;
-	const firstName = name.split(' ')[0];
+	const { name, profilePic, status, username } = client;
+	// const firstName = name.split(' ')[0];
 	return (
 		<div className="Welcome">
-			<h1 className="Welcome__name">Welcome, {firstName}</h1>
+			<h1 className="Welcome__name">Welcome, {username}</h1>
 			<img src={profilePic} alt={`${name}`} className="Welcome__pic" />
 			<p className="Welcome__status">
 				<b>Status:</b> {status}
