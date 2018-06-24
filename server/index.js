@@ -21,7 +21,13 @@ io.on('connection', socket => {
 		console.log('user has disconnected');
 	});
 
-	socket.on('login', username => console.log(username));
+	socket.on('login', username => {
+		console.log(username);
+		socket.emit('login', {
+			status: 'OK',
+			data: `everything ok, your username ${username}`
+		});
+	});
 });
 
 http.listen(config.PORT, config.HOST, () =>

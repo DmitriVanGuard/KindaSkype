@@ -3,7 +3,7 @@ import React from 'react';
 import store from '../store';
 import { loginUser } from '../actions/rootActions';
 
-import socket from '../utils/socket';
+import Client from '../utils/socket';
 
 const handleFormSubmit = evt => {
 	evt.preventDefault();
@@ -12,7 +12,11 @@ const handleFormSubmit = evt => {
 		alert('Please, enter a correct username');
 		return;
 	}
-	socket.emit('login', username);
+
+	Client.emit('login', username)
+		.then(answer => console.log(answer))
+		.catch(err => console.log(err));
+
 	store.dispatch(loginUser(username));
 };
 

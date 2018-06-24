@@ -6,7 +6,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const backendConfig = require('../server/config');
 
 const DEV_SERVER_CONFIG = {
-	// entry: './src/index.jsx',
 	entry: [
 		`webpack-dev-server/client?http://${backendConfig.HOST}:${
 			backendConfig.PROXY_PORT
@@ -22,11 +21,6 @@ const DEV_SERVER_CONFIG = {
 		historyApiFallback: true,
 		host: backendConfig.HOST,
 		port: backendConfig.PROXY_PORT
-		// proxy: {
-		// 	'/': {
-		// 		target: 'http://localhost:3000'
-		// 	}
-		// }
 	},
 
 	plugins: [
