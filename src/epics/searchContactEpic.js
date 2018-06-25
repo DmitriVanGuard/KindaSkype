@@ -1,9 +1,5 @@
 import { Observable } from 'rxjs/Rx';
-import { map } from 'rxjs/operators';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/observable/of';
-// import {} from '../actions/rootActions';
+
 import Client from '../utils/socket';
 import {
 	CONTACT_SEARCH,
@@ -24,11 +20,12 @@ const searchContactFulfilled = payload => ({
 });
 
 const searchContactEpic = action$ =>
-	action$.ofType(CONTACT_SEARCH).mergeMap(action => {
-		console.log(action);
-		return Observable.fromPromise(
-			Client.emit(action.type, action.payload)
-		).pipe(map(response => searchContactFulfilled(response)));
-	});
+	action$
+		.ofType(CONTACT_SEARCH)
+		.mergeMap(action =>
+			Observable.fromPromise(Client.emit(action.type, action.payload)).map(
+				response => searchContactFulfilled(response)
+			)
+		);
 
 export default searchContactEpic;

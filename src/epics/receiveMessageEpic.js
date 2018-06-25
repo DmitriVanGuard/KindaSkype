@@ -1,5 +1,3 @@
-import 'rxjs/add/operator/map';
-
 import { RECEIVE_MESSAGE } from '../actions/types';
 import { addNotification } from '../actions/rootActions';
 
