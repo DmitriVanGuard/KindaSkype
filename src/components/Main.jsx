@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Welcome from './Welcome/Welcome';
-import Chat from './Chat/Chat';
+import Conversation from './Conversation/Conversation';
 
 import './Main.css';
 
 const Main = ({ client, chosenContactId }) => (
 	<main className="Main">
-		{chosenContactId !== null ? <Chat /> : <Welcome client={client} />}
+		{chosenContactId !== null ? <Conversation /> : <Welcome client={client} />}
 	</main>
 );
 

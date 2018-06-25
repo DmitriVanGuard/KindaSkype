@@ -2,7 +2,7 @@ import React from 'react';
 import store from '../../store';
 import { setTypingValue, sendMessage, saveMessage } from '../../actions/rootActions';
 
-import './ChatInput.css';
+import './ConversationInput.css';
 
 const handleInputChange = e => {
 	store.dispatch(setTypingValue(e.currentTarget.value));
@@ -20,16 +20,16 @@ const handleFormSubmit = e => {
 	);
 };
 
-const ChatInput = ({ value }) => (
-	<form className="ChatInput" onSubmit={handleFormSubmit}>
+const ConversationInput = ({ value }) => (
+	<form className="ConversationInput" onSubmit={handleFormSubmit}>
 		<input
 			type="text"
 			placeholder="Write a message..."
-			className="ChatInput__input"
+			className="ConversationInput__input"
 			value={value}
 			onChange={handleInputChange}
 		/>
 	</form>
 );
 
-export default ChatInput;
+export default ConversationInput;

@@ -3,21 +3,21 @@ import { connect } from 'react-redux';
 
 import Header from '../Header/Header';
 import Messages from '../Messages/Messages';
-import ChatInput from './ChatInput';
+import ConversationInput from './ConversationInput';
 
 // import store from '../../store';
 
-import './Chat.css';
+import './Conversation.css';
 
-const Chat = ({ chosenContact, messages, typing }) => (
+const Conversation = ({ chosenContact, messages, typing }) => (
 	// const state = store.getState();
 	// const chosenContact = state.contacts.get(chosenContactId);
 	// const messages = state.conversations.get(chosenContactId);
 
-	<div className="Chat">
+	<div className="Conversation">
 		<Header contact={chosenContact} />
 		<Messages messages={messages} />
-		<ChatInput value={typing} />
+		<ConversationInput value={typing} />
 	</div>
 );
 
@@ -32,4 +32,4 @@ const mapStateToProps = ({
 	typing
 });
 
-export default connect(mapStateToProps)(Chat);
+export default connect(mapStateToProps)(Conversation);

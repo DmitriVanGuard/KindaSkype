@@ -1,9 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import Sidebar from './components/Sidebar/Sidebar';
-import Main from './components/Main';
 import ScreensLogin from './screens/Login';
+import ScreensChat from './screens/Chat';
 
 import store from './store';
 
@@ -11,14 +10,13 @@ import './App.css';
 
 const App = () => (
 	<Provider store={store}>
-		{store.getState().client.username !== '' ? (
-			<div className="App">
-				<Sidebar />
-				<Main />
-			</div>
-		) : (
-			<ScreensLogin />
-		)}
+		<div className="App">
+			{store.getState().client.username !== '' ? (
+				<ScreensChat />
+			) : (
+				<ScreensLogin />
+			)}
+		</div>
 	</Provider>
 );
 

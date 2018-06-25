@@ -1,9 +1,9 @@
-.ChatInput {
+.ConversationInput {
 	width: 80%;
 	margin: 1rem auto;
 }
 
-.ChatInput__input {
+.ConversationInput__input {
 	width: 100%;
 	padding: 1rem;
 	background: rgba(0, 0, 0, 0.8);
