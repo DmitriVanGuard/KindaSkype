@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { Subject } from 'rxjs';
 
 import ScreensLogin from './screens/Login';
 import ScreensChat from './screens/Chat';
@@ -12,15 +13,20 @@ import { receiveMessage } from './actions/rootActions';
 
 import './App.css';
 
+Client.onReceiveMessage$ = new Subject();
+Client.subscribtion = Client.onReceiveMessage$.subscribe(data =>
+	store.dispatch(receiveMessage(data))
+);
+
 Client.onReceiveMessage = ({ status, data }) => {
 	if (isStatusOK(status)) {
-		store.dispatch(receiveMessage(data));
-		if (store.getState().chosenContactId !== data.contactId) {
-			store.dispatch({ type: 'ADD_NOTIFICATION', payload: data });
-		}
+		Client.onReceiveMessage$.next(data);
+		// store.dispatch(receiveMessage(data));
+		// if (store.getState().chosenContactId !== data.contactId) {
+		// 	store.dispatch({ type: 'ADD_NOTIFICATION', payload: data });
+		// }
 	}
 };
-
 /* 
 1) this.onContactSearch$ = new Subject();
 

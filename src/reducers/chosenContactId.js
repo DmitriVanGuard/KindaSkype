@@ -5,7 +5,7 @@ import {
 } from '../actions/types';
 
 export default (state = null, action) => {
-	console.log(action);
+	// console.log(action);
 	switch (action.type) {
 		case SET_CHOSEN_CONTACT_ID:
 			return action.payload;

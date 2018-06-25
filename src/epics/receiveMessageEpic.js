@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Rx';
+// import { Observable } from 'rxjs/Rx';
 // import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
@@ -25,10 +25,14 @@ import { addNotification } from '../actions/rootActions';
 const receiveMessageEpic = (action$, state$) =>
 	action$
 		.ofType(RECEIVE_MESSAGE)
-		.filter(chosenContactId => chosenContactId !== state$.chosenContactId)
-		.map(action => {
-			console.log(action, state$);
-			return Observable.from(addNotification(action.payload));
-		});
+		.filter(action => {
+			console.log(state$.getState());
+
+			return action.payload.contactId !== state$.getState().chosenContactId;
+		})
+		.map(action =>
+			// console.log(action, state$.getState().chosenContactId);
+			state$.dispatch(addNotification(action.payload))
+		);
 
 export default receiveMessageEpic;

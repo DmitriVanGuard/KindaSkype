@@ -65,11 +65,12 @@ export const loginUser = username => ({
 	payload: username
 });
 
-export const addNotification = (message, contactId) => ({
+export const addNotification = ({ message, contactId, name }) => ({
 	type: ADD_NOTIFICATION,
 	payload: {
-		message,
-		contactId
+		contactId,
+		name,
+		message
 	}
 });
 
