@@ -6,6 +6,7 @@ import {
 	saveMessage
 } from '../../actions/rootActions';
 
+import Client from '../../utils/socket';
 import './ConversationInput.css';
 
 const handleInputChange = e => {
@@ -14,7 +15,12 @@ const handleInputChange = e => {
 
 const handleFormSubmit = e => {
 	e.preventDefault();
-	const { typing, chosenContactId, editedMsgNumber } = store.getState();
+	const {
+		typing,
+		chosenContactId,
+		contacts,
+		editedMsgNumber
+	} = store.getState();
 	if (typing === '') return;
 
 	store.dispatch(
@@ -22,6 +28,11 @@ const handleFormSubmit = e => {
 			? sendMessage(typing, chosenContactId)
 			: saveMessage(chosenContactId, editedMsgNumber, typing)
 	);
+
+	Client.emit('SEND_MESSAGE', {
+		receipient: contacts.get(chosenContactId).name,
+		message: typing
+	});
 };
 
 const ConversationInput = ({ value }) => (

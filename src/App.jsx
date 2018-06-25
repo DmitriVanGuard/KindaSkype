@@ -5,8 +5,17 @@ import ScreensLogin from './screens/Login';
 import ScreensChat from './screens/Chat';
 
 import store from './store';
+import Client from './utils/socket';
+import { isStatusOK } from './utils';
 
 import './App.css';
+
+Client.onReceiveMessage = ({ status, data }) =>
+	isStatusOK(status) &&
+	store.dispatch({
+		type: 'RECEIVE_MESSAGE',
+		payload: data
+	});
 
 const App = () => (
 	<Provider store={store}>

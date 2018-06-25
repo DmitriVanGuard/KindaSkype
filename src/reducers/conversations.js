@@ -18,7 +18,7 @@ const conversationsMap = new Map(
 );
 
 export default (state = conversationsMap, action) => {
-	console.log(action.type);
+	console.log(action);
 	switch (action.type) {
 		case SEND_MESSAGE:
 		case RECEIVE_MESSAGE: {
@@ -26,9 +26,10 @@ export default (state = conversationsMap, action) => {
 
 			const conversation = state.get(contactId);
 
-			const lastMsgNumber = conversation.size
-				? Array.from(conversation.values())[conversation.size - 1].number + 1
-				: 0;
+			const lastMsgNumber =
+				conversation && conversation.size
+					? Array.from(conversation.values())[conversation.size - 1].number + 1
+					: 0;
 
 			const updatedConversation = new Map(conversation).set(lastMsgNumber, {
 				number: lastMsgNumber,
@@ -40,6 +41,26 @@ export default (state = conversationsMap, action) => {
 			newState.set(contactId, updatedConversation);
 			return newState;
 		}
+
+		// case RECEIVE_MESSAGE: {
+		// 	const { message, senderId } = action.payload;
+
+		// 	const conversation = state.get(senderId);
+
+		// 	const lastMsgNumber = conversation.size
+		// 		? Array.from(conversation.values())[conversation.size - 1].number + 1
+		// 		: 0;
+
+		// 	const updatedConversation = new Map(conversation).set(lastMsgNumber, {
+		// 		number: lastMsgNumber,
+		// 		text: message,
+		// 		isClientMsg: false
+		// 	});
+
+		// 	const newState = new Map(state);
+		// 	newState.set(senderId, new Map(updatedConversation));
+		// 	return newState;
+		// }
 
 		case DELETE_MESSAGE: {
 			const { contactId, messageNumber } = action.payload;

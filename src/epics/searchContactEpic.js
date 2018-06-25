@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import { Observable } from 'rxjs/Rx';
 import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/map';

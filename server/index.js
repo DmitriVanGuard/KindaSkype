@@ -82,12 +82,16 @@ io.on('connection', socket => {
 	socket.on('SEND_MESSAGE', ({ receipient, message }) => {
 		if (!clients.has(receipient)) return;
 
+		console.log(
+			`Send message[${message}] from ${socket.username} to ${receipient}`
+		);
+
 		createAnswer({
 			to: clients.get(receipient),
 			type: 'RECEIVE_MESSAGE',
 			status: 'OK',
 			data: {
-				senderId: socket.id,
+				contactId: socket.id,
 				message
 			}
 		});
