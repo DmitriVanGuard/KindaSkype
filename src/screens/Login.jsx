@@ -3,7 +3,11 @@ import React from 'react';
 import store from '../store';
 import { loginUser } from '../actions/rootActions';
 
+import Input from '../components/ui/Input';
+
 import Client from '../utils/socket';
+
+import './Login.css';
 
 const handleFormSubmit = evt => {
 	evt.preventDefault();
@@ -22,14 +26,20 @@ const handleFormSubmit = evt => {
 };
 
 const ScreensLogin = () => (
-	<div>
-		<form className="Login" onSubmit={handleFormSubmit}>
+	<div className="Login">
+		<form className="Login__form" onSubmit={handleFormSubmit}>
 			<label htmlFor="username" className="Login__label" />
-			<input type="text" id="username" className="Login__input" />
+			{/* <input type="text" id="username" className="Login__input" /> */}
+			<Input
+				placeholder="Enter your login..."
+				id="username"
+				className="Login__input"
+			/>
 			<button type="submit" className="Login__btn">
 				Login!
 			</button>
 		</form>
+		<div className="Login__blur" />
 	</div>
 );
 

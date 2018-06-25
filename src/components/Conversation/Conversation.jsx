@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Header from '../Header/Header';
 import Messages from '../Messages/Messages';
-import ConversationInput from './ConversationInput';
+import ConversationForm from './ConversationForm';
 
 // import store from '../../store';
 
@@ -17,7 +17,7 @@ const Conversation = ({ chosenContact, messages, typing }) => (
 	<div className="Conversation">
 		<Header contact={chosenContact} />
 		<Messages messages={messages} />
-		<ConversationInput value={typing} />
+		<ConversationForm value={typing} />
 	</div>
 );
 

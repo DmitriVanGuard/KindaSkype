@@ -1,0 +1,33 @@
+.Login {
+	position: relative;
+	background: linear-gradient(90deg, #131313, #313131);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.Login__form {
+	display: flex;
+}
+.Login__input {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.Login__btn {
+	border: 0;
+	outline: 0;
+	border-radius: 0 10px 10px 0;
+	color: #fff;
+	background: linear-gradient(90deg, #085894, #466488);
+}
+
+.Login__blur {
+	position: absolute;
+	z-index: -1;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	filter: blur(50px);
+}

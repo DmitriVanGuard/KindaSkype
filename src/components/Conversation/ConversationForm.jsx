@@ -6,8 +6,10 @@ import {
 	saveMessage
 } from '../../actions/rootActions';
 
+import Input from '../ui/Input';
+
 import Client from '../../utils/socket';
-import './ConversationInput.css';
+import './ConversationForm.css';
 
 const handleInputChange = e => {
 	store.dispatch(setTypingValue(e.currentTarget.value));
@@ -35,16 +37,10 @@ const handleFormSubmit = e => {
 	});
 };
 
-const ConversationInput = ({ value }) => (
-	<form className="ConversationInput" onSubmit={handleFormSubmit}>
-		<input
-			type="text"
-			placeholder="Write a message..."
-			className="ConversationInput__input"
-			value={value}
-			onChange={handleInputChange}
-		/>
+const ConversationForm = ({ value }) => (
+	<form className="ConversationForm" onSubmit={handleFormSubmit}>
+		<Input value={value} onChange={handleInputChange} />
 	</form>
 );
 
-export default ConversationInput;
+export default ConversationForm;
