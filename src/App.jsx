@@ -10,12 +10,15 @@ import { isStatusOK } from './utils';
 
 import './App.css';
 
-Client.onReceiveMessage = ({ status, data }) =>
-	isStatusOK(status) &&
-	store.dispatch({
-		type: 'RECEIVE_MESSAGE',
-		payload: data
-	});
+Client.onReceiveMessage = ({ status, data }) => {
+	if (isStatusOK(status)) {
+		store.dispatch({
+			type: 'RECEIVE_MESSAGE',
+			payload: data
+		});
+		store.dispatch({ type: 'ADD_NOTIFICATION', payload: data });
+	}
+};
 
 const App = () => (
 	<Provider store={store}>

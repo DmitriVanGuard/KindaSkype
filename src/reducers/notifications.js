@@ -1,7 +1,6 @@
 import { ADD_NOTIFICATION } from '../actions/types';
 
 export default (state = null, action) => {
-	console.log(action);
 	switch (action.type) {
 		case ADD_NOTIFICATION:
 			return new Map(state).set(action.payload.contactId, action.payload);

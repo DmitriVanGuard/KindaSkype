@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import NotificationList from './NotificationList';
 
-export class Notification extends Component {
+class Notification extends Component {
 	state = {
 		isShown: false
 	};
@@ -27,8 +27,8 @@ export class Notification extends Component {
 	}
 }
 
-const mapStateToProps = state => ({
-	notifications: state.notifications
+const mapStateToProps = ({ notifications }) => ({
+	notifications
 });
 
 export default connect(mapStateToProps)(Notification);
