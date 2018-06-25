@@ -92,6 +92,7 @@ io.on('connection', socket => {
 			status: 'OK',
 			data: {
 				contactId: socket.id,
+				name: socket.username,
 				message
 			}
 		});
