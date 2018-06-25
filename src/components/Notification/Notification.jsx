@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import NotificationList from './NotificationList';
 
 export class Notification extends Component {
 	state = {
@@ -12,8 +15,10 @@ export class Notification extends Component {
 
 	render() {
 		const { isShown } = this.state;
+		const { notifications } = this.props;
 		return (
 			<div className="Notification">
+				{isShown && <NotificationList notifications={notifications} />}
 				<button type="button" className="Notification__toggle">
 					{isShown ? 'Close notifications' : 'Show notifications'}
 				</button>
@@ -22,4 +27,8 @@ export class Notification extends Component {
 	}
 }
 
-export default Notification;
+const mapStateToProps = state => ({
+	notifications: state.notifications
+});
+
+export default connect(mapStateToProps)(Notification);
