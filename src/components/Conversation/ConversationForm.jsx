@@ -11,8 +11,8 @@ import Input from '../ui/Input';
 import Client from '../../utils/socket';
 import './ConversationForm.css';
 
-const handleInputChange = e => {
-	store.dispatch(setTypingValue(e.currentTarget.value));
+const handleInputChange = evt => {
+	store.dispatch(setTypingValue(evt.currentTarget.value));
 };
 
 const handleFormSubmit = e => {

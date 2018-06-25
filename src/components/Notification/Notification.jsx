@@ -17,7 +17,11 @@ class Notification extends Component {
 
 	render() {
 		const { isShown } = this.state;
-		const { notifications } = this.props;
+		const { notifications, isTyping } = this.props;
+		const notificationsAmount = notifications ? notifications.size : 0;
+		const notificationStatus = isTyping
+			? `[${notificationsAmount}]`
+			: `Notifications [${notificationsAmount}]`;
 		return (
 			<div className="Notification">
 				{isShown && <NotificationList notifications={notifications} />}
@@ -26,17 +30,16 @@ class Notification extends Component {
 					className="Notification__toggle"
 					onClick={this.handleButtonClick}
 				>
-					{isShown
-						? 'Close notifications'
-						: `Notifications [${notifications ? notifications.size : 0}]`}
+					{isShown ? 'Close notifications' : notificationStatus}
 				</button>
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = ({ notifications }) => ({
-	notifications
+const mapStateToProps = ({ notifications, typing }) => ({
+	notifications,
+	isTyping: typing.length > 0
 });
 
 export default connect(mapStateToProps)(Notification);
