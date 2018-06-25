@@ -33,19 +33,23 @@ io.on('connection', socket => {
 	socket.on('login', username => {
 		console.log(username);
 		// setTimeout(() => {
-		if (username && !clients.has(username)) {
-			clients.set(username, socket);
-			socket.username = username;
+		// Todo: fix multiple messages to client
+		if (!username || clients.has(username)) {
+			console.log(`Sending error WS to ${username}`);
 			socket.emit(
 				'login',
-				createAnswer('OK', `everything ok, your username ${username}`)
+				createAnswer('ERROR', `Please, choose another username`)
 			);
+			return;
 		}
+
+		clients.set(username, socket);
+		socket.username = username;
+		console.log(`Sending success WS to ${username}`);
 		socket.emit(
 			'login',
-			createAnswer('ERROR', `Please, choose another username`)
+			createAnswer('OK', `everything ok, your username ${username}`)
 		);
-
 		// }, 500);
 		// console.log(io.sockets);
 	});

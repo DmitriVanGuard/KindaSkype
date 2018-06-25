@@ -6,7 +6,8 @@ import {
 	EDIT_MESSAGE,
 	SAVE_MESSAGE,
 	USER_LOGIN,
-	START_NEW_CONVERSATION
+	START_NEW_CONVERSATION,
+	RECEIVE_MESSAGE
 } from './types';
 
 export const setChosenContactId = id => ({
@@ -26,6 +27,14 @@ export const setTypingValue = value => ({
 
 export const sendMessage = (message, contactId) => ({
 	type: SEND_MESSAGE,
+	payload: {
+		message,
+		contactId
+	}
+});
+
+export const receiveMessage = (message, contactId) => ({
+	type: RECEIVE_MESSAGE,
 	payload: {
 		message,
 		contactId

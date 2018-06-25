@@ -1,6 +1,10 @@
 import React from 'react';
 import store from '../../store';
-import { setTypingValue, sendMessage, saveMessage } from '../../actions/rootActions';
+import {
+	setTypingValue,
+	sendMessage,
+	saveMessage
+} from '../../actions/rootActions';
 
 import './ConversationInput.css';
 

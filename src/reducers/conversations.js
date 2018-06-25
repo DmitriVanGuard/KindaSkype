@@ -1,5 +1,6 @@
 import {
 	SEND_MESSAGE,
+	RECEIVE_MESSAGE,
 	DELETE_MESSAGE,
 	SAVE_MESSAGE,
 	START_NEW_CONVERSATION
@@ -19,7 +20,8 @@ const conversationsMap = new Map(
 export default (state = conversationsMap, action) => {
 	console.log(action.type);
 	switch (action.type) {
-		case SEND_MESSAGE: {
+		case SEND_MESSAGE:
+		case RECEIVE_MESSAGE: {
 			const { message, contactId } = action.payload;
 
 			const conversation = state.get(contactId);
@@ -31,7 +33,7 @@ export default (state = conversationsMap, action) => {
 			const updatedConversation = new Map(conversation).set(lastMsgNumber, {
 				number: lastMsgNumber,
 				text: message,
-				isClientMsg: true
+				isClientMsg: action.type === SEND_MESSAGE
 			});
 
 			const newState = new Map(state);
