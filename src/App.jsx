@@ -5,9 +5,9 @@ import { Subject } from 'rxjs';
 import ScreensLogin from './screens/Login';
 import ScreensChat from './screens/Chat';
 
-import store from './store';
 import Client from './utils/socket';
 import { isStatusOK } from './utils';
+import store from './store';
 
 import { receiveMessage } from './actions/rootActions';
 
@@ -17,16 +17,12 @@ Client.onReceiveMessage$ = new Subject();
 Client.subscribtion = Client.onReceiveMessage$.subscribe(data =>
 	store.dispatch(receiveMessage(data))
 );
-
 Client.onReceiveMessage = ({ status, data }) => {
 	if (isStatusOK(status)) {
 		Client.onReceiveMessage$.next(data);
-		// store.dispatch(receiveMessage(data));
-		// if (store.getState().chosenContactId !== data.contactId) {
-		// 	store.dispatch({ type: 'ADD_NOTIFICATION', payload: data });
-		// }
 	}
 };
+
 /* 
 1) this.onContactSearch$ = new Subject();
 
