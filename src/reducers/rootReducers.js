@@ -7,6 +7,7 @@ import conversations from './conversations';
 import typing from './typing';
 import editedMsgNumber from './editedMsgNumber';
 import matchedContacts from './matchedContacts';
+import notifications from './notifications';
 
 export default combineReducers({
 	client,
@@ -15,5 +16,6 @@ export default combineReducers({
 	conversations,
 	typing,
 	editedMsgNumber,
-	matchedContacts
+	matchedContacts,
+	notifications
 });

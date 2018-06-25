@@ -7,7 +7,8 @@ import {
 	SAVE_MESSAGE,
 	USER_LOGIN,
 	START_NEW_CONVERSATION,
-	RECEIVE_MESSAGE
+	RECEIVE_MESSAGE,
+	ADD_NOTIFICATION
 } from './types';
 
 export const setChosenContactId = id => ({
@@ -59,4 +60,12 @@ export const saveMessage = (contactId, messageNumber, message) => ({
 export const loginUser = username => ({
 	type: USER_LOGIN,
 	payload: username
+});
+
+export const addNotification = (message, contactId) => ({
+	type: ADD_NOTIFICATION,
+	payload: {
+		message,
+		contactId
+	}
 });
