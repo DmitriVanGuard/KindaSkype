@@ -42,26 +42,6 @@ export default (state = conversationsMap, action) => {
 			return newState;
 		}
 
-		// case RECEIVE_MESSAGE: {
-		// 	const { message, senderId } = action.payload;
-
-		// 	const conversation = state.get(senderId);
-
-		// 	const lastMsgNumber = conversation.size
-		// 		? Array.from(conversation.values())[conversation.size - 1].number + 1
-		// 		: 0;
-
-		// 	const updatedConversation = new Map(conversation).set(lastMsgNumber, {
-		// 		number: lastMsgNumber,
-		// 		text: message,
-		// 		isClientMsg: false
-		// 	});
-
-		// 	const newState = new Map(state);
-		// 	newState.set(senderId, new Map(updatedConversation));
-		// 	return newState;
-		// }
-
 		case DELETE_MESSAGE: {
 			const { contactId, messageNumber } = action.payload;
 
@@ -87,8 +67,11 @@ export default (state = conversationsMap, action) => {
 			return newState;
 		}
 
+		// case START_NEW_CONVERSATION:
 		case START_NEW_CONVERSATION:
-			return new Map(state).set(action.payload.userId, new Map());
+			return state.get(action.payload.userId)
+				? state
+				: new Map(state).set(action.payload.userId, new Map());
 
 		default:
 			return state;
