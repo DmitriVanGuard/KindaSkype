@@ -26,7 +26,9 @@ class Notification extends Component {
 					className="Notification__toggle"
 					onClick={this.handleButtonClick}
 				>
-					{isShown ? 'Close notifications' : 'Show notifications'}
+					{isShown
+						? 'Close notifications'
+						: `Notifications [${notifications ? notifications.size : 0}]`}
 				</button>
 			</div>
 		);

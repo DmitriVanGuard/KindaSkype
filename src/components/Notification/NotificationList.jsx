@@ -3,6 +3,8 @@ import React from 'react';
 import { clickNotification } from '../../actions/rootActions';
 import store from '../../store';
 
+import './NotificationList.css';
+
 const NotificationList = ({ notifications }) => (
 	<ul className="NotificationList">
 		{notifications &&
@@ -14,7 +16,10 @@ const NotificationList = ({ notifications }) => (
 							store.dispatch(clickNotification(notification));
 						}}
 					>
-						{notification.name}: {notification.message}
+						<span className="NotificationList__item-author">
+							{notification.name}
+						</span>
+						<span>{notification.message}</span>
 					</a>
 				</li>
 			))}
