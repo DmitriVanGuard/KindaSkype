@@ -16,8 +16,14 @@ git clone git@github.com:DmitriVanGuard/KindaSkype.git && cd KindaSkype
 npm i
 ```
 
-### Running server
+### Building the project
 
 ```
-npm serve
+npm run build
+```
+
+### Starting a server
+
+```
+npm run serve
 ```
