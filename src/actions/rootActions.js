@@ -35,11 +35,13 @@ export const sendMessage = (message, contactId) => ({
 	}
 });
 
-export const receiveMessage = (message, contactId) => ({
+export const receiveMessage = ({ message, contactId, name }) => ({
+	// TODO: refactor
 	type: RECEIVE_MESSAGE,
 	payload: {
 		message,
-		contactId
+		contactId,
+		name
 	}
 });
 
