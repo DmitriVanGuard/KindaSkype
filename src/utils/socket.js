@@ -23,7 +23,7 @@ class Client {
 	}
 }
 
-socket.on('login', answer => console.log('Login ws received', answer));
+// socket.on('login', answer => console.log('Login ws received', answer));
 
 const client = new Client();
 

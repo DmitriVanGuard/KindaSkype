@@ -31,49 +31,66 @@ io.on('connection', socket => {
 	});
 
 	socket.on('login', username => {
-		console.log(username);
-		// setTimeout(() => {
-		// Todo: fix multiple messages to client
 		if (!username || clients.has(username)) {
-			console.log(`Sending error WS to ${username}`);
-			socket.emit(
-				'login',
-				createAnswer('ERROR', `Please, choose another username`)
-			);
+			console.log(`Sending login error WS to ${username}`);
+
+			createAnswer({
+				to: socket,
+				type: 'login',
+				status: 'ERROR',
+				data: `Username - '${username}' is already taken. Please, choose another username`
+			});
 			return;
 		}
 
 		clients.set(username, socket);
 		socket.username = username;
-		console.log(`Sending success WS to ${username}`);
-		socket.emit(
-			'login',
-			createAnswer('OK', `everything ok, your username ${username}`)
-		);
-		// }, 500);
-		// console.log(io.sockets);
+		console.log(`Sending login success WS to ${username}`);
+
+		createAnswer({
+			to: socket,
+			type: 'login',
+			status: 'OK',
+			data: `everything ok, your username ${username}`
+		});
 	});
 
 	socket.on('CONTACT_SEARCH', contactUsername => {
 		if (contactUsername && socket.username !== contactUsername) {
-			// console.log();
 			const contact = clients.get(contactUsername);
-			socket.emit(
-				'CONTACT_SEARCH',
-				createAnswer(
-					'OK',
-					contact === undefined
-						? null
-						: [
-								{
-									userId: clients.get(contactUsername).id,
-									name: contactUsername,
-									status: 'Online'
-								}
-						  ]
-				)
-			);
+
+			const data =
+				contact === undefined
+					? null
+					: [
+							{
+								userId: clients.get(contactUsername).id,
+								name: contactUsername,
+								status: 'Online'
+							}
+					  ];
+
+			createAnswer({
+				to: socket,
+				type: 'CONTACT_SEARCH',
+				status: 'OK',
+				data
+			});
 		}
+	});
+
+	socket.on('SEND_MESSAGE', ({ receipient, message }) => {
+		if (!clients.has(receipient)) return;
+
+		createAnswer({
+			to: clients.get(receipient),
+			type: 'RECEIVE_MESSAGE',
+			status: 'OK',
+			data: {
+				senderId: socket.id,
+				message
+			}
+		});
 	});
 });
 
@@ -81,9 +98,9 @@ http.listen(config.PORT, config.HOST, () =>
 	console.log(`Listening on port ${config.PORT}...`)
 );
 
-function createAnswer(status, data) {
-	return {
+function createAnswer({ to, type, status, data }) {
+	to.emit(type, {
 		status,
 		data
-	};
+	});
 }
