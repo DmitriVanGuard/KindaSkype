@@ -16,7 +16,9 @@ Client.onReceiveMessage = ({ status, data }) => {
 			type: 'RECEIVE_MESSAGE',
 			payload: data
 		});
-		store.dispatch({ type: 'ADD_NOTIFICATION', payload: data });
+		if (store.getState().chosenContactId !== data.contactId) {
+			store.dispatch({ type: 'ADD_NOTIFICATION', payload: data });
+		}
 	}
 };
 
