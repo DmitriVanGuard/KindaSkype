@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const proxy = require('express-http-proxy');
 
@@ -9,13 +10,23 @@ const config = require('./config');
 
 const clients = new Map();
 
-app.use('*', (req, res, next) => {
-	if (req.originalUrl.indexOf('socket.io/') === -1) {
-		proxy(`${config.HOST}:${config.PROXY_PORT}`, {
-			proxyReqPathResolver: req => req.originalUrl
-		})(req, res, next);
-	}
-});
+if (process.env.NODE_ENV === 'dev_server') {
+	app.use('*', (req, res, next) => {
+		if (req.originalUrl.indexOf('socket.io/') === -1) {
+			proxy(`${config.HOST}:${config.PROXY_PORT}`, {
+				proxyReqPathResolver: req => req.originalUrl
+			})(req, res, next);
+		}
+	});
+} else {
+	app.get('*.js', (req, res, next) => {
+		req.url = `${req.url}.gz`;
+		res.set('Content-Encoding', 'gzip');
+		next();
+	});
+
+	app.use(express.static(path.join(__dirname, '../build')));
+}
 
 io.on('connection', socket => {
 	console.log('New user has connected to the server...');

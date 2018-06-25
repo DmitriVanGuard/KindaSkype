@@ -22,7 +22,6 @@ class Sidebar extends Component {
 		this.subscription = this.onContactSearch$
 			.debounceTime(700)
 			.subscribe(username => {
-				console.log(username);
 				store.dispatch(
 					username !== '' ? searchContact(username) : resetContactSearch()
 				);

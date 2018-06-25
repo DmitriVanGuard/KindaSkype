@@ -6,8 +6,9 @@
 	"scripts": {
 		"dev": "NODE_ENV=development webpack-dev-server --mode development --watch",
 		"server:client": "NODE_ENV=dev_server webpack-dev-server --mode development --watch",
-		"server": "nodemon server/index.js",
-		"build": "NODE_ENV=production webpack --mode production"
+		"server": "NODE_ENV=dev_server nodemon server/index.js",
+		"build": "NODE_ENV=production webpack --mode production",
+		"serve": "node server/index.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -34,6 +35,7 @@
 		"babel-preset-env": "^1.7.0",
 		"babel-preset-react": "^6.24.1",
 		"clean-webpack-plugin": "^0.1.19",
+		"compression-webpack-plugin": "^1.1.11",
 		"css-loader": "^0.28.11",
 		"eslint": "^5.0.0",
 		"eslint-config-airbnb": "^17.0.0",
@@ -46,7 +48,9 @@
 		"eslint-plugin-react": "^7.9.1",
 		"faker": "^4.1.0",
 		"html-webpack-plugin": "^3.2.0",
+		"mini-css-extract-plugin": "^0.4.0",
 		"nodemon": "^1.17.5",
+		"optimize-css-assets-webpack-plugin": "^4.0.2",
 		"react-hot-loader": "^4.3.3",
 		"style-loader": "^0.21.0",
 		"txtgen": "^2.2.2",
