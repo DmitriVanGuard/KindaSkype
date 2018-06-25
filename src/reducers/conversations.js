@@ -67,7 +67,6 @@ export default (state = conversationsMap, action) => {
 			return newState;
 		}
 
-		// case START_NEW_CONVERSATION:
 		case START_NEW_CONVERSATION:
 			return state.get(action.payload.userId)
 				? state

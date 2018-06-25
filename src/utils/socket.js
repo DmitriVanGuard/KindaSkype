@@ -4,11 +4,6 @@ import * as Action from '../actions/types';
 
 const socket = io();
 
-// function onMessageReceive({ status, data }) {
-// 	if (isStatusOK(status))
-// 		store.dispatch({ type: Action.RECEIVE_MESSAGE, payload: data });
-// }
-
 class Client {
 	constructor() {
 		this.socket = socket;
