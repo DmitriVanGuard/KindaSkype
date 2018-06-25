@@ -7,7 +7,7 @@ export default (state = false, action) => {
 			return false;
 
 		case CONTACT_SEARCH_SUCCESS:
-			return action.payload && objectsToMapByKey(action.payload, 'userId');
+			return action.payload && objectsToMapByKey(action.payload, 'contactId');
 
 		default:
 			return state;

@@ -9,7 +9,7 @@ const generateUser = () => ({
 	email: faker.internet.email(),
 	profilePic: faker.internet.avatar(),
 	status: txtgen.sentence(),
-	userId: currentId++
+	contactId: currentId++
 });
 
 const generateUsers = numberOfUsers => {
@@ -44,7 +44,7 @@ const generateConversations = contacts => {
 	const conversations = {};
 
 	contacts.forEach(
-		contact => (conversations[contact.userId] = generateMsgs(10))
+		contact => (conversations[contact.contactId] = generateMsgs(10))
 	);
 
 	return conversations;

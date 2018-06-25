@@ -3,7 +3,8 @@ import {
 	RECEIVE_MESSAGE,
 	DELETE_MESSAGE,
 	SAVE_MESSAGE,
-	START_NEW_CONVERSATION
+	START_NEW_CONVERSATION,
+	CLICK_NOTIFICATION
 } from '../actions/types';
 
 import conversations from '../../public/conversations';
@@ -18,7 +19,6 @@ const conversationsMap = new Map(
 );
 
 export default (state = conversationsMap, action) => {
-	console.log(action);
 	switch (action.type) {
 		case SEND_MESSAGE:
 		case RECEIVE_MESSAGE: {
@@ -67,10 +67,11 @@ export default (state = conversationsMap, action) => {
 			return newState;
 		}
 
+		case CLICK_NOTIFICATION:
 		case START_NEW_CONVERSATION:
-			return state.get(action.payload.userId)
+			return state.get(action.payload.contactId)
 				? state
-				: new Map(state).set(action.payload.userId, new Map());
+				: new Map(state).set(action.payload.contactId, new Map());
 
 		default:
 			return state;

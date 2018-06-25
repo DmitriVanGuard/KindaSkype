@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { setChosenContactId } from '../../actions/rootActions';
+import { clickNotification } from '../../actions/rootActions';
 import store from '../../store';
 
 const NotificationList = ({ notifications }) => (
@@ -11,7 +11,7 @@ const NotificationList = ({ notifications }) => (
 					<a
 						onClick={e => {
 							e.preventDefault();
-							store.dispatch(setChosenContactId(notification.contactId));
+							store.dispatch(clickNotification(notification));
 						}}
 					>
 						{notification.name}: {notification.message}

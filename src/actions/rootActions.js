@@ -8,7 +8,8 @@ import {
 	USER_LOGIN,
 	START_NEW_CONVERSATION,
 	RECEIVE_MESSAGE,
-	ADD_NOTIFICATION
+	ADD_NOTIFICATION,
+	CLICK_NOTIFICATION
 } from './types';
 
 export const setChosenContactId = id => ({
@@ -67,5 +68,14 @@ export const addNotification = (message, contactId) => ({
 	payload: {
 		message,
 		contactId
+	}
+});
+
+export const clickNotification = ({ contactId, name, message }) => ({
+	type: CLICK_NOTIFICATION,
+	payload: {
+		contactId,
+		name,
+		message
 	}
 });

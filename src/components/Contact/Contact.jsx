@@ -8,14 +8,14 @@ import {
 
 import './Contact.css';
 
-function handleUserClick({ userId }) {
-	console.log(userId);
+function handleUserClick({ contactId }) {
+	console.log(contactId);
 	const { matchedContacts } = store.getState();
 
 	store.dispatch(
 		matchedContacts
-			? startNewConversation(matchedContacts.get(userId))
-			: setChosenContactId(userId)
+			? startNewConversation(matchedContacts.get(contactId))
+			: setChosenContactId(contactId)
 	);
 }
 

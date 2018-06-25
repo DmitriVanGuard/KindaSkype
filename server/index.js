@@ -64,7 +64,7 @@ io.on('connection', socket => {
 					? null
 					: [
 							{
-								userId: clients.get(contactUsername).id,
+								contactId: clients.get(contactUsername).id,
 								name: contactUsername,
 								status: 'Online'
 							}
