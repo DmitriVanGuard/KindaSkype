@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Subject } from 'rxjs';
+import store from '../../store';
 
-import Contacts from '../Contact/Contacts';
+import Contacts from '../Contacts/Contacts';
 import SidebarSearch from './SidebarSearch';
 
-import store from '../../store';
 import {
 	searchContact,
 	resetContactSearch

@@ -6,12 +6,10 @@ import {
 	startNewConversation
 } from '../../actions/rootActions';
 
-import './Contact.css';
+import './ContactsItem.css';
 
 function handleUserClick({ contactId }) {
-	console.log(contactId);
 	const { matchedContacts } = store.getState();
-
 	store.dispatch(
 		matchedContacts
 			? startNewConversation(matchedContacts.get(contactId))
@@ -19,24 +17,24 @@ function handleUserClick({ contactId }) {
 	);
 }
 
-const Contact = ({ contact }) => {
+const ContactsItem = ({ contact }) => {
 	const { name, profilePic, status } = contact;
 	return (
-		<div className="Contact" onClick={() => handleUserClick(contact)}>
+		<div className="ContactsItem" onClick={() => handleUserClick(contact)}>
 			<img
 				src={
 					profilePic ||
 					'https://s3.amazonaws.com/uifaces/faces/twitter/mauriolg/128.jpg'
 				}
 				alt={`${name} pic`}
-				className="Contact__pic"
+				className="ContactsItem__pic"
 			/>
-			<div className="Contact__details">
-				<p className="Contact__details-name">{name}</p>
-				<p className="Contact__details-status">{status}</p>
+			<div className="ContactsItem__details">
+				<p className="ContactsItem__details-name">{name}</p>
+				<p className="ContactsItem__details-status">{status}</p>
 			</div>
 		</div>
 	);
 };
 
-export default Contact;
+export default ContactsItem;

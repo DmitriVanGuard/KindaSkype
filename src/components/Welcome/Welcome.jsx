@@ -4,7 +4,6 @@ import './Welcome.css';
 
 const Welcome = ({ client }) => {
 	const { name, profilePic, status, username } = client;
-	// const firstName = name.split(' ')[0];
 	return (
 		<div className="Welcome">
 			<h1 className="Welcome__name">Welcome, {username}</h1>

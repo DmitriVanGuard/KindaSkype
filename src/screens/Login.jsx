@@ -2,10 +2,9 @@ import React from 'react';
 
 import store from '../store';
 import { loginUser } from '../actions/rootActions';
+import Client from '../utils/socket';
 
 import Input from '../components/ui/Input';
-
-import Client from '../utils/socket';
 
 import './Login.css';
 
@@ -18,10 +17,7 @@ const handleFormSubmit = evt => {
 	}
 
 	Client.emit('login', username)
-		.then(response => {
-			console.log(response);
-			store.dispatch(loginUser(username));
-		})
+		.then(() => store.dispatch(loginUser(username)))
 		.catch(err => alert(err.data));
 };
 
@@ -29,7 +25,6 @@ const ScreensLogin = () => (
 	<div className="Login">
 		<form className="Login__form" onSubmit={handleFormSubmit}>
 			<label htmlFor="username" className="Login__label" />
-			{/* <input type="text" id="username" className="Login__input" /> */}
 			<Input
 				placeholder="Enter your login..."
 				id="username"

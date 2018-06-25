@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import store from './store';
+import fancyLog from './utils/log';
+
 import App from './App';
 
-import store from './store';
-// import registerServiceWorker from './registerServiceWorker';
 import './index.css';
-import fancyLog from './utils/log';
 
 const render = () => {
 	fancyLog();
@@ -15,4 +15,3 @@ const render = () => {
 
 render();
 store.subscribe(render);
-// registerServiceWorker();

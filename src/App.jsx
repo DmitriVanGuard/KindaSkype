@@ -2,14 +2,13 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Subject } from 'rxjs';
 
-import ScreensLogin from './screens/Login';
-import ScreensChat from './screens/Chat';
-
 import Client from './utils/socket';
 import { isStatusOK } from './utils';
 import store from './store';
-
 import { receiveMessage } from './actions/rootActions';
+
+import ScreensLogin from './screens/Login';
+import ScreensChat from './screens/Chat';
 
 import './App.css';
 

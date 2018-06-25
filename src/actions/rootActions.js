@@ -1,34 +1,22 @@
-import {
-	SET_CHOSEN_CONTACT_ID,
-	SET_TYPING_VALUE,
-	SEND_MESSAGE,
-	DELETE_MESSAGE,
-	EDIT_MESSAGE,
-	SAVE_MESSAGE,
-	USER_LOGIN,
-	START_NEW_CONVERSATION,
-	RECEIVE_MESSAGE,
-	ADD_NOTIFICATION,
-	CLICK_NOTIFICATION
-} from './types';
+import * as Action from './types';
 
 export const setChosenContactId = id => ({
-	type: SET_CHOSEN_CONTACT_ID,
+	type: Action.SET_CHOSEN_CONTACT_ID,
 	payload: id
 });
 
 export const startNewConversation = contact => ({
-	type: START_NEW_CONVERSATION,
+	type: Action.START_NEW_CONVERSATION,
 	payload: contact
 });
 
 export const setTypingValue = value => ({
-	type: SET_TYPING_VALUE,
+	type: Action.SET_TYPING_VALUE,
 	payload: value
 });
 
 export const sendMessage = (message, contactId) => ({
-	type: SEND_MESSAGE,
+	type: Action.SEND_MESSAGE,
 	payload: {
 		message,
 		contactId
@@ -37,7 +25,7 @@ export const sendMessage = (message, contactId) => ({
 
 export const receiveMessage = ({ message, contactId, name }) => ({
 	// TODO: refactor
-	type: RECEIVE_MESSAGE,
+	type: Action.RECEIVE_MESSAGE,
 	payload: {
 		message,
 		contactId,
@@ -46,27 +34,27 @@ export const receiveMessage = ({ message, contactId, name }) => ({
 });
 
 export const deleteMessage = (contactId, messageNumber) => ({
-	type: DELETE_MESSAGE,
+	type: Action.DELETE_MESSAGE,
 	payload: { contactId, messageNumber }
 });
 
 export const editMessage = (messageNumber, message) => ({
-	type: EDIT_MESSAGE,
+	type: Action.EDIT_MESSAGE,
 	payload: { messageNumber, message }
 });
 
 export const saveMessage = (contactId, messageNumber, message) => ({
-	type: SAVE_MESSAGE,
+	type: Action.SAVE_MESSAGE,
 	payload: { contactId, messageNumber, message }
 });
 
 export const loginUser = username => ({
-	type: USER_LOGIN,
+	type: Action.USER_LOGIN,
 	payload: username
 });
 
 export const addNotification = ({ message, contactId, name }) => ({
-	type: ADD_NOTIFICATION,
+	type: Action.ADD_NOTIFICATION,
 	payload: {
 		contactId,
 		name,
@@ -75,7 +63,7 @@ export const addNotification = ({ message, contactId, name }) => ({
 });
 
 export const clickNotification = ({ contactId, name, message }) => ({
-	type: CLICK_NOTIFICATION,
+	type: Action.CLICK_NOTIFICATION,
 	payload: {
 		contactId,
 		name,

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Contact from './Contact';
+import ContactsItem from './ContactsItem';
 
 const Contacts = ({ contacts }) =>
 	contacts
 		? Array.from(contacts.values()).map(contact => (
-				<Contact contact={contact} key={contact.contactId} />
+				<ContactsItem contact={contact} key={contact.contactId} />
 		  ))
 		: 'No contacts with such username were found :(';
 

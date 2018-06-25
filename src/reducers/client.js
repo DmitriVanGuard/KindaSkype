@@ -1,4 +1,3 @@
-// import client from '../../public/client';
 import { USER_LOGIN } from '../actions/types';
 
 export default (state = { username: '', contactId: 0 }, action) => {

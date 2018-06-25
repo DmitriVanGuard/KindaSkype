@@ -2,11 +2,9 @@ import io from 'socket.io-client';
 import { isStatusOK } from './index';
 import * as Action from '../actions/types';
 
-const socket = io();
-
 class Client {
 	constructor() {
-		this.socket = socket;
+		this.socket = io();
 		this._onReceiveMessage = null;
 
 		this.socket.on('message', answer => this.handlePromise(answer));
@@ -19,7 +17,6 @@ class Client {
 		);
 	}
 
-	// emit(type, payload, timeout = 5000) {
 	emit(type, payload) {
 		return new Promise((resolve, reject) => {
 			this.handlePromise = answer =>
@@ -35,8 +32,4 @@ class Client {
 	}
 }
 
-// socket.on('login', answer => console.log('Login ws received', answer));
-
-const client = new Client();
-
-export default client;
+export default new Client();
