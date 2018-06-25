@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import NotificationList from './NotificationList';
 
+import './Notification.css';
+
 class Notification extends Component {
 	state = {
 		isShown: false
@@ -19,7 +21,11 @@ class Notification extends Component {
 		return (
 			<div className="Notification">
 				{isShown && <NotificationList notifications={notifications} />}
-				<button type="button" className="Notification__toggle">
+				<button
+					type="button"
+					className="Notification__toggle"
+					onClick={this.handleButtonClick}
+				>
 					{isShown ? 'Close notifications' : 'Show notifications'}
 				</button>
 			</div>
