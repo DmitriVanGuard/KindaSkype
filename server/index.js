@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === 'dev_server') {
 	});
 } else {
 	config.HOST = 'localhost';
-
+	
 	app.get('*.js', (req, res, next) => {
 		req.url = `${req.url}.gz`;
 		res.set('Content-Encoding', 'gzip');
@@ -113,7 +113,7 @@ io.on('connection', socket => {
 });
 
 http.listen(config.PORT, config.HOST, () =>
-	console.log(`Listening on port ${config.PORT}...`)
+	console.log(`Listening on "${config.HOST}:${config.PORT}" ...`)
 );
 
 function createAnswer({ to, type, status, data }) {
