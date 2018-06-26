@@ -1,6 +1,6 @@
 # KindaSkype
 
-**Some sort of skype created using React, RxJS, Redux-Observable**
+**Some sort of skype created using React, RxJS, Redux-Observable, Node.js, WebSocket**
 
 ## Usage
 
